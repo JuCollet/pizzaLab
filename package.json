@@ -11,7 +11,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "test": "mocha -w test/helper/browser.js --require babel-core/register --compilers jsx:babel-core/register \"test/**/*.test.{js,jsx}\" --watch --require ignore-styles --no-deprecation"
+    "test": "mocha test/helper/browser.js --require babel-core/register --compilers jsx:babel-core/register \"test/**/*.test.{js,jsx}\" --watch --require ignore-styles --no-deprecation",
+    "test:watch": "mocha -w test/helper/browser.js --require babel-core/register --compilers jsx:babel-core/register \"test/**/*.test.{js,jsx}\" --watch --require ignore-styles --no-deprecation"
   },
   "dependencies": {
     "next": "^5.0.0",
