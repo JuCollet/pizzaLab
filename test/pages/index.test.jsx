@@ -6,7 +6,7 @@ import Index from '../../pages/index';
 
 describe('App', () => {
   it('exists', () => {
-    //const wrapper = shallow(<Index />);
-    expect(true).to.eql(true);
+    const wrapper = shallow(<Index />);
+    expect(wrapper.find('h1').exists()).to.eql(true);
   });
 });

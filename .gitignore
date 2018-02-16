@@ -1,1 +1,3 @@
 node_modules
+.next
+.nyc_outuput
