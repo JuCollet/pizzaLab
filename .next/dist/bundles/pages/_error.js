@@ -67,25 +67,24 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 0:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("C:\\Users\\User\\Documents\\GitHub\\pizzaLab\\node_modules\\next\\dist\\pages\\_error.js");
-
-
-/***/ }),
-
-/***/ "C:\\Users\\User\\Documents\\GitHub\\pizzaLab\\node_modules\\next\\dist\\pages\\_error.js":
+/***/ 10:
 /***/ (function(module, exports) {
 
 module.exports = require("C:\\Users\\User\\Documents\\GitHub\\pizzaLab\\node_modules\\next\\dist\\pages\\_error.js");
 
+/***/ }),
+
+/***/ 9:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(10);
+
+
 /***/ })
 
 /******/ });
-//# sourceMappingURL=_error.js.map

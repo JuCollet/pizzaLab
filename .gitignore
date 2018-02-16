@@ -1,3 +1,3 @@
-node_modules
-.next
-.nyc_outuput
+node_modules/
+.next/
+.nyc_outuput/

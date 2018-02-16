@@ -67,12 +67,24 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
-/******/ ({
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
 
-/***/ "./pages/index.jsx":
+module.exports = require("redux");
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(2);
+
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82,9 +94,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__("react");
+var _nextReduxWrapper = __webpack_require__(3);
+
+var _nextReduxWrapper2 = _interopRequireDefault(_nextReduxWrapper);
+
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _store = __webpack_require__(5);
+
+var _store2 = _interopRequireDefault(_store);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -95,29 +115,91 @@ var Index = function Index() {
     _react2.default.createElement(
       'h1',
       null,
-      'C\'est bon mec'
+      'Ok biloute'
     )
   );
 };
 
-exports.default = Index;
+exports.default = (0, _nextReduxWrapper2.default)(_store2.default, null, null)(Index);
 
 /***/ }),
+/* 3 */
+/***/ (function(module, exports) {
 
-/***/ 2:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("./pages/index.jsx");
-
+module.exports = require("next-redux-wrapper");
 
 /***/ }),
-
-/***/ "react":
+/* 4 */
 /***/ (function(module, exports) {
 
 module.exports = require("react");
 
-/***/ })
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
 
-/******/ });
-//# sourceMappingURL=index.js.map
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _redux = __webpack_require__(0);
+
+var _reduxDevtoolsExtension = __webpack_require__(6);
+
+var _reduxThunk = __webpack_require__(7);
+
+var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+var _reducers = __webpack_require__(8);
+
+var _reducers2 = _interopRequireDefault(_reducers);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initStore = function initStore() {
+  var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  return (0, _redux.createStore)(_reducers2.default, initialState, (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxThunk2.default)));
+};
+
+exports.default = initStore;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("redux-devtools-extension");
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = require("redux-thunk");
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _redux = __webpack_require__(0);
+
+var rootReducer = (0, _redux.combineReducers)({
+  state: function state() {
+    var _state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    return _state;
+  }
+});
+
+exports.default = rootReducer;
+
+/***/ })
+/******/ ]);
