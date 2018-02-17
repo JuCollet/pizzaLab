@@ -30,4 +30,4 @@ jobs:
       - run: yarn coverage:report
 
       # Zeit Now deployment
-      - run: yarn now -t ${NOW_TOKEN} --public
+      - run: yarn now -t $NOW_TOKEN --public
