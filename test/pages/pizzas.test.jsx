@@ -55,6 +55,6 @@ describe('Pizzas', () => {
     };
     const store = createMockStore(testState);
     const wrapper = mountWithStore(<Pizzas />, store);
-    expect(wrapper.find('h1').exists()).to.eql(true);
+    expect(wrapper.exists()).to.eql(true);
   });
 });

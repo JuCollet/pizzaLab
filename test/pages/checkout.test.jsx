@@ -55,6 +55,6 @@ describe('Checkout', () => {
     };
     const store = createMockStore(testState);
     const wrapper = mountWithStore(<Checkout />, store);
-    expect(wrapper.find('h1').exists()).to.eql(true);
+    expect(wrapper.exists()).to.eql(true);
   });
 });

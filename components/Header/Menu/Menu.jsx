@@ -13,7 +13,7 @@ export default () => (
     <style jsx>{`
       ul {
         list-style: none;
-        margin: 0px 0px 0px 25px;
+        margin: 0;
         padding: 0;
       }
     `}

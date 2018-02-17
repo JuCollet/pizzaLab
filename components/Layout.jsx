@@ -14,6 +14,7 @@ const style = `
   body {
     background-image: url("/static/background.jpg");
     background-size: cover;
+    background-attachment: fixed;
   }
   .Layout {
     height: 100%;
