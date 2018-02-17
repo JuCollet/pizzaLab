@@ -18,6 +18,9 @@ jobs:
 
       - run: yarn install
 
+      # Install Zeit Now
+      - run: yarn global add now
+
       - save_cache:
           paths:
             - node_modules
@@ -25,4 +28,6 @@ jobs:
         
       # run tests!
       - run: yarn coverage:report
+
+      # Zeit Now deployment
       - run: now -t ${NOW_TOKEN}
