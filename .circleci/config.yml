@@ -30,5 +30,5 @@ jobs:
       - run: yarn coverage:report
 
       # Zeit Now deployment
-      - run: now --token ${NOW_TOKEN} --public
-      - run: now alias
+      - run: yarn now --token="${NOW_TOKEN}" --public
+      - run: yarn now alias --token="${NOW_TOKEN}"
