@@ -19,7 +19,7 @@ jobs:
       - run: yarn install
 
       # Install Zeit Now
-      - run: yarn global add now
+      - run: yarn add now
 
       - save_cache:
           paths:
@@ -30,4 +30,4 @@ jobs:
       - run: yarn coverage:report
 
       # Zeit Now deployment
-      - run: now -t ${NOW_TOKEN}
+      - run: yarn now -t ${NOW_TOKEN} --public
