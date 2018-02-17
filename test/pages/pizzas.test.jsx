@@ -4,7 +4,7 @@ import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 import { createMockStore } from 'redux-test-utils';
 
-import Index from '../../pages/index';
+import Pizzas from '../../pages/pizzas';
 
 const shallowWithoutStore = (customProps) => { // eslint-disable-line no-unused-vars
   const props = Object.assign({
@@ -12,7 +12,7 @@ const shallowWithoutStore = (customProps) => { // eslint-disable-line no-unused-
   });
 
   const functionMock = sinon.spy();
-  const wrapper = shallow(<Index {...props} functionToMock={functionMock} />);
+  const wrapper = shallow(<Pizzas {...props} functionToMock={functionMock} />);
 
   return {
     functionMock,
@@ -26,7 +26,7 @@ const mountWithoutStore = (customProps) => { // eslint-disable-line no-unused-va
   });
 
   const functionMock = sinon.spy();
-  const wrapper = mount(<Index {...props} functionToMock={functionMock} />);
+  const wrapper = mount(<Pizzas {...props} functionToMock={functionMock} />);
 
   return {
     functionMock,
@@ -48,13 +48,13 @@ const mountWithStore = (component, store) => {
   return mount(component, { context });
 };
 
-describe('Index', () => {
+describe('Pizzas', () => {
   it('exists', () => {
     const testState = {
       showBox: {},
     };
     const store = createMockStore(testState);
-    const wrapper = mountWithStore(<Index />, store);
+    const wrapper = mountWithStore(<Pizzas />, store);
     expect(wrapper.find('h1').exists()).to.eql(true);
   });
 });
