@@ -1,12 +1,18 @@
 import React from 'react';
+import Link from 'next/link';
 import Menu from './Menu/Menu';
+import Logo from './Logo/Logo';
 import ButtonCheckout from '../Button/ButtonCheckout';
 
 const Header = () => (
   <nav>
-    <img className="logo" src="/static/logo.png" alt="Pizza Labo" width="120" />
+    <Link href="/">
+      <a className="header-logo"><Logo /></a>
+    </Link>
     <Menu />
-    <ButtonCheckout />
+    <Link href="/checkout">
+      <a className="header-checkout-button"><ButtonCheckout /></a>
+    </Link>
     <style jsx>{`
       nav { 
         position: fixed;
@@ -16,9 +22,14 @@ const Header = () => (
         height: 100px;
         width: 100%;
       }
-      .logo {
+      .header-logo {
         align-self: flex-start;
         margin-left: 50px;
+      }
+      .header-checkout-button {
+        position: absolute;
+        right: 50px;
+        text-decoration: none;
       }
     `}
     </style>

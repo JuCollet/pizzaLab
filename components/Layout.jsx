@@ -3,22 +3,34 @@ import PropTypes from 'prop-types';
 
 import Header from './Header/Header';
 
+const style = `
+  @import url('https://fonts.googleapis.com/css?family=Bitter');
+  @import url('https://fonts.googleapis.com/css?family=Roboto');
+  html, body, #__next {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+  }
+  body {
+    background-image: url("/static/background.jpg");
+    background-size: cover;
+  }
+  .Layout {
+    height: 100%;
+  }
+  .content {
+    padding-top: 100px;
+    height: calc(100% - 100px);
+  }
+`;
+
 const Layout = props => (
   <div className="Layout">
     <Header />
     <div className="content">
       { props.children }
     </div>
-    <style jsx>{`
-        .Layout {
-          height: 100%;
-        }
-        .content {
-          padding-top: 100px;
-          height: calc(100% - 100px);
-        }
-    `}
-    </style>
+    <style jsx global>{style}</style>
   </div>
 );
 

@@ -16,14 +16,6 @@ export default () => (
         margin: 0px 0px 0px 25px;
         padding: 0;
       }
-
-      li {
-        display: inline-block;
-        font-family: Bitter;
-        color: white;
-        margin-left: 50px;
-      }
-
     `}
     </style>
   </ul>

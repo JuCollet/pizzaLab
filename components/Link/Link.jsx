@@ -11,7 +11,7 @@ const Link = props => (
       .link {
         position: relative;
         display: inline-block;
-        margin: 0px 0px 0px 50px;
+        margin: 0px 0px 0px 75px;
         padding: 0;
         font-family: Bitter;
         text-decoration: none;

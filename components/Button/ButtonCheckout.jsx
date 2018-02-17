@@ -9,8 +9,6 @@ const ButtonCheckout = props => (
     <span className="button-checkout-text">COMMANDER</span>
     <style jsx>{`
       .button-checkout {
-        position: absolute;
-        right: 50px;
         padding: 5px 10px;
         border-radius: 3px;
         background-color: #FF6347;
