@@ -1,3 +1,5 @@
 node_modules/
 .next/
-.nyc_outuput/
+.nyc_output/
+
+coverage.lcov

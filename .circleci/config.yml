@@ -18,6 +18,9 @@ jobs:
 
       - run: yarn install
 
+      # Install JQ to process JSON from now-no-alias
+      -run: sudo apt-get install jq
+
       # Install Zeit Now
       - run: sudo yarn global add now now-no-alias
 
@@ -32,4 +35,4 @@ jobs:
       # Zeit Now deployment
       - run: now -t ${NOW_TOKEN} --public
       - run: now alias -t ${NOW_TOKEN}
-      - run: now rm -t ${NOW_TOKEN} $(now-no-alias | json -a uid) -y
+      - run: now rm -t ${NOW_TOKEN} $(now-no-alias | jq -r '.[] | .uid') -y
