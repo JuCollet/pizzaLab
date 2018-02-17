@@ -19,7 +19,7 @@ jobs:
       - run: yarn install
 
       # Install JQ to process JSON from now-no-alias
-      -run: sudo apt-get install jq
+      - run: sudo apt-get install jq
 
       # Install Zeit Now
       - run: sudo yarn global add now now-no-alias
