@@ -1,5 +1,6 @@
 import withRedux from 'next-redux-wrapper';
 import React from 'react';
+import NextLink from 'next/link';
 
 import Layout from '../components/Layout';
 import Button from '../components/Button/Button';
@@ -12,7 +13,9 @@ const Index = () => (
       <h3>Lorem ipsum dolor amet neutra four loko fashion
         axe forage hexagon sartorial food truck trust fund squid tbh.
       </h3>
-      <Button title="Commander" size="btn-30" color="btn-red" />
+      <NextLink href="/pizzas">
+        <a><Button title="Commander" size="btn-11" color="btn-red" /></a>
+      </NextLink>
     </div>
     <style jsx>{`
       .index {
@@ -21,7 +24,7 @@ const Index = () => (
         align-items: center;
         justify-content: center;
         height: 100%;
-        background-image: url("/static/index-background.png");
+        background-image: url("/static/index-background.jpg");
         background-size: cover;
         background-position: center center;
       }

@@ -11,6 +11,9 @@ const style = `
     margin: 0;
     height: 100%;
   }
+  a {
+    text-decoration: none;
+  }
   body {
     background-image: url("/static/background.jpg");
     background-size: cover;

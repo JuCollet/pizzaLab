@@ -15,10 +15,10 @@ const Button = props => (
         transition: .25s;
         text-transform: uppercase;
       }
-      .btn-30 {
+      .btn-11 {
         padding: 10px 25px;
-        border-radius: 40px;
-        font-size: 1.2em;
+        border-radius: 50px;
+        font-size: 1.1em;
       }
       .btn-red {
         background-color: ${colors.red}
@@ -34,7 +34,7 @@ const Button = props => (
 Button.propTypes = {
   title: PropTypes.string.isRequired,
   color: PropTypes.oneOf(['btn-red']).isRequired,
-  size: PropTypes.oneOf(['btn-30']).isRequired,
+  size: PropTypes.oneOf(['btn-11']).isRequired,
 };
 
 export default Button;

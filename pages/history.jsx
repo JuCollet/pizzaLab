@@ -58,7 +58,7 @@ const History = () => (
           background-position: center center;
         }
         .history-row-2 {
-          background-image: url("/static/history-slide2-fire.png");
+          background-image: url("/static/history-slide2-fire.jpg");
           background-size: cover;
           background-repeat: no-repeat;
           background-position: top center;
