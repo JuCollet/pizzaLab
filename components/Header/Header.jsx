@@ -41,6 +41,7 @@ class Header extends PureComponent {
           nav { 
             position: fixed;
             display: flex;
+            z-index: 99999;
             align-items: center;
             top: 0;
             height: 100px;

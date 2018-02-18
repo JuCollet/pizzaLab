@@ -5,7 +5,7 @@ import Header from './Header/Header';
 
 const style = `
   @import url('https://fonts.googleapis.com/css?family=Bitter');
-  @import url('https://fonts.googleapis.com/css?family=Roboto');
+  @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400');
   html, body, #__next {
     padding: 0;
     margin: 0;

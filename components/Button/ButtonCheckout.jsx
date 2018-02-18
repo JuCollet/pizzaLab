@@ -1,19 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import colors from '../colors';
+
 const ButtonCheckout = props => (
   <div className="button-checkout">
     <span className="button-checkout-amount">{props.amount}€&nbsp;</span>
     <span className="button-checkout-amount-ghost">{props.amount}€&nbsp;</span>
     <span>|&nbsp;</span>
-    <span className="button-checkout-text">COMMANDER</span>
+    <span className="button-checkout-text">commander</span>
     <style jsx>{`
       .button-checkout {
-        padding: 5px 10px;
-        border-radius: 3px;
-        background-color: #FF6347;
+        padding: 7px 14px;
+        border-radius: 20px;
+        background-color: ${colors.red};
         font-family: Roboto;
         font-size: .9em;
+        text-transform: uppercase;
         color: white;
         cursor: pointer;
         transition: .2s;
@@ -33,7 +36,7 @@ const ButtonCheckout = props => (
         100% {transform: translateY(0px); opacity: 1;}
       }
       .button-checkout:hover {
-        background-color: #ea4f33;
+        background-color: ${colors.darkRed};
       }
     `}
     </style>
