@@ -5,6 +5,9 @@
     "browser": true
   },
   "rules" : {
-    "jsx-a11y/anchor-is-valid" : "off"
+    "jsx-a11y/anchor-is-valid" : "off",
+    "no-confusing-arrow": ["error", {
+      "allowParens": true
+    }]
   }
 }
