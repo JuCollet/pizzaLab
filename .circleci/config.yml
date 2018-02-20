@@ -30,7 +30,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      - run: yarn coverage:report
+      - run: yarn test
 
       # Zeit Now deployment
       - run: now -t ${NOW_TOKEN} --public
