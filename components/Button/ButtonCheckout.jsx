@@ -1,46 +1,48 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import colors from '../colors';
+import { colors } from '../../styles/colors';
+
+const StyledButtonCheckout = styled.div`
+  display: inline-block;
+  padding: 7px 14px;
+  border-radius: 20px;
+  background-color: ${colors.red};
+  font-family: Roboto;
+  font-size: .9em;
+  text-transform: uppercase;
+  color: white;
+  cursor: pointer;
+  transition: .2s;
+  &:hover {
+    background-color: ${colors.darkRed};
+  }
+`;
+
+const Amount = styled.span`
+  position: absolute;
+  font-weight: normal;
+  animation: amount-price .5s;
+  @keyframes amount-price {
+    0% {opacity: 1}
+    30% {transform: translateY(10px); opacity: 0;}
+    31% {transform: translateY(-10px); opacity: 0;}
+    100% {transform: translateY(0px); opacity: 1;}
+  }
+`;
+
+const AmountGhost = styled.span`
+  opacity: 0;
+`;
 
 const ButtonCheckout = props => (
-  <div className="button-checkout">
-    <span className="button-checkout-amount">{props.amount}€&nbsp;</span>
-    <span className="button-checkout-amount-ghost">{props.amount}€&nbsp;</span>
+  <StyledButtonCheckout>
+    <Amount>{props.amount}€&nbsp;</Amount>
+    <AmountGhost>{props.amount}€&nbsp;</AmountGhost>
     <span>|&nbsp;</span>
     <span className="button-checkout-text">commander</span>
-    <style jsx>{`
-      .button-checkout {
-        padding: 7px 14px;
-        border-radius: 20px;
-        background-color: ${colors.red};
-        font-family: Roboto;
-        font-size: .9em;
-        text-transform: uppercase;
-        color: white;
-        cursor: pointer;
-        transition: .2s;
-      }
-      .button-checkout-amount {
-        position: absolute;
-        font-weight: normal;
-        animation: amount-price .5s;
-      }
-      .button-checkout-amount-ghost {
-        opacity: 0;
-      }
-      @keyframes amount-price {
-        0% {opacity: 1}
-        30% {transform: translateY(10px); opacity: 0;}
-        31% {transform: translateY(-10px); opacity: 0;}
-        100% {transform: translateY(0px); opacity: 1;}
-      }
-      .button-checkout:hover {
-        background-color: ${colors.darkRed};
-      }
-    `}
-    </style>
-  </div>
+  </StyledButtonCheckout>
 );
 
 ButtonCheckout.propTypes = {

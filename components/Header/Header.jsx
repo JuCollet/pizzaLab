@@ -1,78 +1,47 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 import Link from 'next/link';
 import Menu from './Menu/Menu';
 import Logo from './Logo/Logo';
+
+import { tablet } from '../../styles/mediaQueries';
 import ButtonCheckout from '../Button/ButtonCheckout';
 
-class Header extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { userHasScrolled: false };
-    this.onScrollHandler = this.onScrollHandler.bind(this);
-  }
+const Nav = styled.nav`
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  height: 75px;
+  width: 100%;
+  background-color: ${props => (props.transparent ? 'none' : 'rgba(0,0,0,.85)')};
+  transition: .25s;
+`;
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.onScrollHandler);
-    this.onScrollHandler();
-  }
+const LogoWrapper = styled.a`
+  align-self: flex-start;
+  margin-left: 50px;
+`;
 
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScrollHandler);
+const ButtonWrapper = styled.a`
+  position: absolute;
+  right: 50px;
+  ${tablet} {
+    display: none;
   }
+`;
 
-  onScrollHandler() {
-    let userHasScrolled;
-    if (window.pageYOffset > 10) userHasScrolled = true;
-    else userHasScrolled = false;
-    this.setState({ userHasScrolled });
-  }
-
-  render() {
-    return (
-      <nav className={this.state.userHasScrolled ? 'nav-small' : null}>
-        <Link href="/">
-          <a className="header-logo"><Logo height="125" className="header-logo-img" /></a>
-        </Link>
-        <Menu />
-        <Link href="/checkout">
-          <a className="header-checkout-button"><ButtonCheckout /></a>
-        </Link>
-        <style jsx>{`
-          nav { 
-            position: fixed;
-            display: flex;
-            z-index: 99999;
-            align-items: center;
-            top: 0;
-            height: 100px;
-            width: 100%;
-            transition: .25s;
-          }
-          .header-logo {
-            align-self: flex-start;
-            width: 120px;
-            margin-left: 50px;
-          }
-          .header-checkout-button {
-            position: absolute;
-            right: 50px;
-            text-decoration: none;
-          }
-          .nav-small {
-            height: 75px;
-            background-color: #1E1E1E;
-          }
-          :global(.header-logo-img){
-            transition: .25s;
-          }
-          :global(.nav-small .header-logo .header-logo-img) {
-            height: 94px;
-          }
-        `}
-        </style>
-      </nav>
-    );
-  }
-}
+const Header = () => (
+  <Nav>
+    <Link href="/">
+      <LogoWrapper><Logo pointer /></LogoWrapper>
+    </Link>
+    <Menu />
+    <Link href="/checkout">
+      <ButtonWrapper><ButtonCheckout /></ButtonWrapper>
+    </Link>
+  </Nav>
+);
 
 export default Header;
