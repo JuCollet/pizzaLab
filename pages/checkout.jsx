@@ -4,13 +4,7 @@ import Layout from '../components/Layout';
 
 class Checkout extends PureComponent {
   render() {
-    return (
-      <Layout>
-        <div>
-          <h1>Checkout</h1>
-        </div>
-      </Layout>
-    );
+    return <Layout />
   }
 }
 

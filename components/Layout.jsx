@@ -6,14 +6,14 @@ import Header from './Header/Header';
 
 const LayoutWrapper = styled.div`
   height: 100%;
-  background-image: url("/static/index-background.jpg");
+  background-image: url(${props => (props.backgroundImage)});
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
 `;
 
 const Layout = props => (
-  <LayoutWrapper>
+  <LayoutWrapper backgroundImage={props.backgroundImage} >
     <Header />
     { props.children }
     <style jsx global>{`
@@ -36,6 +36,11 @@ Layout.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  backgroundImage: PropTypes.string,
+};
+
+Layout.defaultProps = {
+  backgroundImage: '/static/background.jpg',
 };
 
 export default Layout;

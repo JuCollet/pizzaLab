@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import Layout from '../components/Layout';
 import Button from '../components/Button/Button';
-import initStore from '../store';
+import store from '../store';
 
 const Content = styled.div`
   display: flex;
@@ -37,7 +37,7 @@ const SubTitle = styled.h3`
 `;
 
 const Index = () => (
-  <Layout>
+  <Layout backgroundImage="/static/index-background.jpg" >
     <Content>
       <Title>Votre pizza sur-mesure</Title>
       <SubTitle>Lorem ipsum dolor amet neutra four loko fashion
@@ -50,4 +50,4 @@ const Index = () => (
   </Layout>
 );
 
-export default withRedux(initStore, null, null)(Index);
+export default withRedux(store, null, null)(Index);
