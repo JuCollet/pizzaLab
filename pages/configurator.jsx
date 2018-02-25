@@ -47,13 +47,14 @@ function mapStateToProps(state) {
 }
 
 Configurator.propTypes = {
-  isFetching: PropTypes.bool.isRequired,
+  isFetching: PropTypes.bool,
   toppings: PropTypes.arrayOf(PropTypes.object),
   toppingsFetch: PropTypes.func.isRequired,
 };
 
 Configurator.defaultProps = {
   toppings: [],
+  isFetching: false,
 };
 
 export default withRedux(store, mapStateToProps, mapDispatchToProps)(Configurator);
