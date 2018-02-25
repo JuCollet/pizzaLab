@@ -43,7 +43,7 @@ const Index = () => (
       <SubTitle>Lorem ipsum dolor amet neutra four loko fashion
         axe forage hexagon sartorial food truck trust fund squid tbh.
       </SubTitle>
-      <NextLink href="/pizzas">
+      <NextLink href="/configurator">
         <a><Button title="Créer ma pizza" /></a>
       </NextLink>
     </Content>
