@@ -1,24 +1,14 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
-import { mount } from 'enzyme';
-import { expect } from 'chai';
+import 'jest-styled-components';
+import { shallow } from 'enzyme';
 
 import Header from '../../../components/Header/Header';
 
-const mountWithoutStore = (customProps) => {
-  const props = Object.assign({
-    ...customProps,
-  });
-
-  const wrapper = mount(<Header {...props} />);
-
-  return {
-    wrapper,
-  };
-};
-
 describe('Header', () => {
-  it('should exists', () => {
-    const { wrapper } = mountWithoutStore();
-    expect(wrapper.exists()).to.eql(true);
+  it('should have correct background color', () => {
+    const wrapper = shallow(<Header />);
+    expect(wrapper).toHaveStyleRule('background-color', 'rgba(0,0,0,.85)'); // eslint-disable-line no-undef
+    wrapper.setProps({ transparent: true });
+    expect(wrapper).toHaveStyleRule('background-color', 'transparent'); // eslint-disable-line no-undef
   });
 });

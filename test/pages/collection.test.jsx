@@ -4,7 +4,7 @@ import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 import { createMockStore } from 'redux-test-utils';
 
-import Pizzas from '../../pages/pizzas';
+import Collection from '../../pages/collection';
 
 const shallowWithoutStore = (customProps) => { // eslint-disable-line no-unused-vars
   const props = Object.assign({
@@ -12,7 +12,7 @@ const shallowWithoutStore = (customProps) => { // eslint-disable-line no-unused-
   });
 
   const functionMock = sinon.spy();
-  const wrapper = shallow(<Pizzas {...props} functionToMock={functionMock} />);
+  const wrapper = shallow(<Collection {...props} functionToMock={functionMock} />);
 
   return {
     functionMock,
@@ -26,7 +26,7 @@ const mountWithoutStore = (customProps) => { // eslint-disable-line no-unused-va
   });
 
   const functionMock = sinon.spy();
-  const wrapper = mount(<Pizzas {...props} functionToMock={functionMock} />);
+  const wrapper = mount(<Collection {...props} functionToMock={functionMock} />);
 
   return {
     functionMock,
@@ -48,13 +48,13 @@ const mountWithStore = (component, store) => {
   return mount(component, { context });
 };
 
-describe('Pizzas', () => {
+describe('Collection', () => {
   it('exists', () => {
     const testState = {
       showBox: {},
     };
     const store = createMockStore(testState);
-    const wrapper = mountWithStore(<Pizzas />, store);
+    const wrapper = mountWithStore(<Collection />, store);
     expect(wrapper.exists()).to.eql(true);
   });
 });
