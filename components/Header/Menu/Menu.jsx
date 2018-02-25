@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import Link from '../Link/Link';
 
 const links = [
-  { title: 'Notre histoire', page: 'history' },
-  { title: 'Nos pizzas', page: 'pizzas' },
-  { title: "L'atelier", page: 'shop' },
+  { title: "L'atelier", page: 'configurator' },
+  { title: 'Les créations', page: 'collection' },
 ];
 
 const Menu = styled.ul`

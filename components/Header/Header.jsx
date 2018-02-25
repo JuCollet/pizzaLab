@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Menu from './Menu/Menu';
 import Logo from './Logo/Logo';
@@ -15,7 +16,7 @@ const Nav = styled.nav`
   top: 0;
   height: 75px;
   width: 100%;
-  background-color: ${props => (props.transparent ? 'none' : 'rgba(0,0,0,.85)')};
+  background-color: ${props => (props.transparent ? 'transparent' : 'rgba(0,0,0,.85)')};
   transition: .25s;
 `;
 
@@ -32,8 +33,8 @@ const ButtonWrapper = styled.a`
   }
 `;
 
-const Header = () => (
-  <Nav>
+const Header = props => (
+  <Nav transparent={props.transparent} >
     <Link href="/">
       <LogoWrapper><Logo pointer /></LogoWrapper>
     </Link>
@@ -43,5 +44,13 @@ const Header = () => (
     </Link>
   </Nav>
 );
+
+Header.propTypes = {
+  transparent: PropTypes.bool,
+};
+
+Header.defaultProps = {
+  transparent: false,
+};
 
 export default Header;
