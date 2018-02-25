@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
+import configuratorReducer from './reducer_configurator';
+import fetchingReducer from './reducer_fetching';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state,
+  configurator: configuratorReducer,
+  fetching: fetchingReducer,
 });
 
 export default rootReducer;
