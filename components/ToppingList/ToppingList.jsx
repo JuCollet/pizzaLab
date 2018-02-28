@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import ToppingItem from './ToppingItem/ToppingItem';
 
 const StyledToppingList = styled.ul`
+  display: block;
+  width: 90%;
   list-style: none;
   padding: 0;
   margin: 0;

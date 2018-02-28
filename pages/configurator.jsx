@@ -12,9 +12,19 @@ import ToppingList from '../components/ToppingList/ToppingList';
 
 const PageWrapper = styled.div`
   display: flex;
+  padding-top: 75px;
+  height: calc(100% - 75px);
+`;
+
+const PagePreview = styled.div`
+  width: 50%;
   height: 100%;
-  align-items: center;
-  justify-content: center;
+`;
+
+const PageTools = styled.div`
+  overflow: auto;
+  padding: 5% 5%;
+  width: 50%;
 `;
 
 class Configurator extends PureComponent {
@@ -28,7 +38,10 @@ class Configurator extends PureComponent {
     return (
       <Layout>
         <PageWrapper>
-          <ToppingList toppings={this.props.toppings} />
+          <PagePreview />
+          <PageTools>
+            <ToppingList toppings={this.props.toppings} />
+          </PageTools>
         </PageWrapper>
       </Layout>
     );
