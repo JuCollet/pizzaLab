@@ -9,8 +9,8 @@ import Configurator from '../../pages/configurator';
 
 const mockFetchingData = {
   configurator: {
-    toppings: [
-      {
+    toppings: {
+      ananas: {
         fields: {
           name: 'Ingredient 1',
           description: 'description 1',
@@ -21,7 +21,7 @@ const mockFetchingData = {
           id: 'id 1',
         },
       },
-      {
+      anchoix: {
         fields: {
           name: 'Ingredient 2',
           description: 'description 2',
@@ -32,7 +32,13 @@ const mockFetchingData = {
           id: 'id 2',
         },
       },
-    ],
+    },
+    selection: {
+      ananas: {
+        amount: 1,
+      },
+      price: 9.5,
+    },
   },
   toppingsFetch: sinon.spy(),
   isFetching: true,
@@ -40,8 +46,8 @@ const mockFetchingData = {
 
 const mockData = {
   configurator: {
-    toppings: [
-      {
+    toppings: {
+      ananas: {
         fields: {
           name: 'Ingredient 1',
           description: 'description 1',
@@ -52,7 +58,7 @@ const mockData = {
           id: 'id 1',
         },
       },
-      {
+      anchoix: {
         fields: {
           name: 'Ingredient 2',
           description: 'description 2',
@@ -63,15 +69,13 @@ const mockData = {
           id: 'id 2',
         },
       },
-    ],
-  },
-  toppingsFetch: sinon.spy(),
-  isFetching: false,
-};
-
-const mockEmptyData = {
-  configurator: {
-    toppings: [],
+    },
+    selection: {
+      ananas: {
+        amount: 1,
+      },
+      price: 9.5,
+    },
   },
   toppingsFetch: sinon.spy(),
   isFetching: false,
@@ -79,7 +83,6 @@ const mockEmptyData = {
 
 const mockStore = configureStore([thunk])(mockData);
 const mockFetchingStore = configureStore([thunk])(mockFetchingData);
-const mockEmptyStore = configureStore([thunk])(mockEmptyData);
 
 describe('Configurator', () => {
   it('Should render if data is fetched', () => {
@@ -88,10 +91,6 @@ describe('Configurator', () => {
   });
   it('Should not render if data is fetching', () => {
     const wrapper = mount(<Configurator store={mockFetchingStore} />);
-    expect(wrapper.find('ToppingList').exists()).to.eql(false);
-  });
-  it('Should not render if data is empty', () => {
-    const wrapper = mount(<Configurator store={mockEmptyStore} />);
     expect(wrapper.find('ToppingList').exists()).to.eql(false);
   });
 });
