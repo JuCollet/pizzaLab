@@ -1,5 +1,5 @@
 import { createClient } from 'contentful';
-import { IS_FETCHING, TOPPINGS_FETCH } from '../actiontypes/';
+import { IS_FETCHING, SELECTION_UPDATE, TOPPINGS_FETCH } from '../actiontypes/';
 
 const client = createClient({
   space: 'ud3s73f14jbe',
@@ -31,6 +31,19 @@ function toppingsFetch() {
   };
 }
 
+function updateSelection(name, increment) {
+  return (dispatch) => {
+    dispatch({
+      type: SELECTION_UPDATE,
+      payload: {
+        name,
+        increment: increment === true,
+      },
+    });
+  };
+}
+
 export {
   toppingsFetch,
+  updateSelection,
 };

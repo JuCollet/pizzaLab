@@ -1,7 +1,9 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { expect } from 'chai';
-import { toppingsFetch } from '../../actions/configurator';
+import { toppingsFetch, updateSelection } from '../../actions/configurator';
+import { IS_FETCHING, SELECTION_UPDATE, TOPPINGS_FETCH } from '../../actiontypes/';
+
 
 const mockStore = configureMockStore([thunk]);
 
@@ -15,6 +17,16 @@ describe('Actions', () => {
         expect(actions[0]).to.eql({ type: 'is_fetching', payload: true });
         expect(actions[1]).to.include({ type: 'toppings_fetch' });
         expect(actions[2]).to.eql({ type: 'is_fetching', payload: false });
+      });
+    });
+    describe('UpdateSelection', () => {
+      it('Should create the expected action', () => {
+        const store = mockStore();
+        store.dispatch(updateSelection('test a', true));
+        store.dispatch(updateSelection('test b', false));
+        const actions = store.getActions();
+        expect(actions[0]).to.eql({ type: SELECTION_UPDATE, payload: { name: 'test a', increment: true } });
+        expect(actions[1]).to.eql({ type: SELECTION_UPDATE, payload: { name: 'test b', increment: false } });
       });
     });
   });
