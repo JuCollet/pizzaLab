@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import ButtonAddRemove from '../Button/ButtonAddRemove';
+import ButtonIncDec from './ButtonIncDec/ButtonIncDec';
 
 const StyledCounter = styled.div`
   display: inline-block;
@@ -35,20 +35,30 @@ const StyledCounterTextGhost = styled.span`
   opacity: 0;
 `;
 
-const clickHandler = () => console.log('ok');
-
 const Counter = props => (
   <StyledCounter size={props.size}>
-    <ButtonAddRemove add onClickHandler={clickHandler} />
-    <StyledCounterText size={props.size}>{props.counter}</StyledCounterText>
-    <StyledCounterTextGhost size={props.size}>{props.counter}</StyledCounterTextGhost>
-    <ButtonAddRemove onClickHandler={clickHandler} />
+    <ButtonIncDec
+      clickHandler={props.clickHandler}
+      name={props.name}
+      disabled={props.amount === 0}
+    />
+    <StyledCounterText size={props.size}>{props.amount}</StyledCounterText>
+    <StyledCounterTextGhost size={props.size}>{props.amount}</StyledCounterTextGhost>
+    <ButtonIncDec
+      add
+      clickHandler={props.clickHandler}
+      name={props.name}
+      disabled={props.amount >= props.max}
+    />
   </StyledCounter>
 );
 
 Counter.propTypes = {
-  counter: PropTypes.number.isRequired,
+  amount: PropTypes.number.isRequired,
+  clickHandler: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
   size: PropTypes.oneOf([20]),
+  max: PropTypes.number.isRequired,
 };
 
 Counter.defaultProps = {

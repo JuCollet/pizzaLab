@@ -33,14 +33,13 @@ class Configurator extends PureComponent {
   }
 
   render() {
-    if ((this.props.toppings && this.props.toppings.length === 0)
-        || this.props.isFetching) return null;
+    if (this.props.isFetching) return null;
     return (
       <Layout>
         <PageWrapper>
           <PagePreview />
           <PageTools>
-            <ToppingList toppings={this.props.toppings} />
+            <ToppingList toppings={this.props.toppings} selection={this.props.selection} />
           </PageTools>
         </PageWrapper>
       </Layout>
@@ -55,18 +54,21 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     toppings: state.configurator.toppings,
+    selection: state.configurator.selection,
     isFetching: state.isFetching,
   };
 }
 
 Configurator.propTypes = {
   isFetching: PropTypes.bool,
-  toppings: PropTypes.arrayOf(PropTypes.object),
+  toppings: PropTypes.objectOf(PropTypes.object).isRequired,
+  selection: PropTypes.shape({
+    price: PropTypes.number.isRequired,
+  }).isRequired,
   toppingsFetch: PropTypes.func.isRequired,
 };
 
 Configurator.defaultProps = {
-  toppings: [],
   isFetching: false,
 };
 

@@ -1,7 +1,11 @@
 import React from 'react';
+import withRedux from 'next-redux-wrapper';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
+import { updateSelection } from '../../../actions/configurator';
+import store from '../../../store';
 import Counter from '../../Counter/Counter';
 
 const StyledToppingItem = styled.li`
@@ -20,16 +24,31 @@ const Ingredient = styled.span`
   color: #FFFFFF;
 `;
 
-
 const ToppingItem = props => (
   <StyledToppingItem>
     <Ingredient>{props.name}</Ingredient>
-    <Counter counter={0} />
+    <Counter
+      amount={props.amount}
+      max={props.max}
+      name={props.name}
+      clickHandler={props.updateSelection}
+    />
   </StyledToppingItem>
 );
 
 ToppingItem.propTypes = {
   name: PropTypes.string.isRequired,
+  updateSelection: PropTypes.func.isRequired,
+  amount: PropTypes.number,
+  max: PropTypes.number,
 };
 
-export default ToppingItem;
+ToppingItem.defaultProps = {
+  amount: 0,
+  max: 3,
+};
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ updateSelection }, dispatch);
+}
+export default withRedux(store, null, mapDispatchToProps)(ToppingItem);
