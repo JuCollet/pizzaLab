@@ -4,27 +4,42 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
-import { toppingsFetch } from '../actions/configurator';
+import { deleteSelection, toppingsFetch } from '../actions/configurator';
 
 import store from '../store';
 import Layout from '../components/Layout';
 import ToppingList from '../components/ToppingList/ToppingList';
+import Button from '../components/Button/Button';
 
 const PageWrapper = styled.div`
   display: flex;
-  padding-top: 75px;
-  height: calc(100% - 75px);
+  height: 100%;
 `;
 
 const PagePreview = styled.div`
   width: 50%;
-  height: 100%;
+  background-image: url("/static/pizza.png");
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
 `;
 
 const PageTools = styled.div`
   overflow: auto;
-  padding: 5% 5%;
+  height: calc(100% - 125px);
+  padding: 100px 5% 25px 5%;
   width: 50%;
+`;
+
+const Title = styled.h1`
+  display: inline-block;
+  padding-bottom: 15px;
+  font-family: Bitter;  
+  font-size: 2em;
+  color: white;
+  text-align: center;
+  border-bottom: 1px dotted white;
+
 `;
 
 class Configurator extends PureComponent {
@@ -39,7 +54,10 @@ class Configurator extends PureComponent {
         <PageWrapper>
           <PagePreview />
           <PageTools>
+            <Title>Configurateur</Title>
             <ToppingList toppings={this.props.toppings} selection={this.props.selection} />
+            <Button title="Ajouter au panier" size={40} />
+            <Button title="Reset" color="grey" size={40} clickHandler={this.props.deleteSelection} />
           </PageTools>
         </PageWrapper>
       </Layout>
@@ -48,7 +66,7 @@ class Configurator extends PureComponent {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ toppingsFetch }, dispatch);
+  return bindActionCreators({ deleteSelection, toppingsFetch }, dispatch);
 }
 
 function mapStateToProps(state) {
@@ -65,6 +83,7 @@ Configurator.propTypes = {
   selection: PropTypes.shape({
     price: PropTypes.number.isRequired,
   }).isRequired,
+  deleteSelection: PropTypes.func.isRequired,
   toppingsFetch: PropTypes.func.isRequired,
 };
 

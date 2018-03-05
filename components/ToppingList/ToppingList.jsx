@@ -7,15 +7,9 @@ import ToppingItem from './ToppingItem/ToppingItem';
 
 const StyledToppingList = styled.ul`
   display: block;
-  width: 90%;
   list-style: none;
   padding: 0;
-  margin: 0;
-`;
-
-const StyledPrice = styled.h1`
-  font-family: Roboto;
-  color: white;
+  margin: 0px 0px 25px 0px;
 `;
 
 const ToppingList = (props) => {
@@ -32,7 +26,6 @@ const ToppingList = (props) => {
           max={topping.fields.max}
         />
       ))}
-      <StyledPrice>Prix : {props.selection.price.toFixed(2)}€</StyledPrice>
     </StyledToppingList>
   );
 };

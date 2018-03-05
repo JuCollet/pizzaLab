@@ -16,7 +16,7 @@ const Nav = styled.nav`
   top: 0;
   height: 75px;
   width: 100%;
-  background-color: ${props => (props.transparent ? 'transparent' : 'rgba(0,0,0,.85)')};
+  background-color: ${props => (props.transparent ? 'transparent' : 'rgba(0,0,0,.8)')};
   transition: .25s;
 `;
 
