@@ -1,5 +1,5 @@
 import { createClient } from 'contentful';
-import { IS_FETCHING, SELECTION_UPDATE, TOPPINGS_FETCH } from '../actiontypes/';
+import { SELECTION_DELETE, IS_FETCHING, SELECTION_UPDATE, TOPPINGS_FETCH } from '../actiontypes/';
 
 const client = createClient({
   space: 'ud3s73f14jbe',
@@ -43,7 +43,16 @@ function updateSelection(name, increment) {
   };
 }
 
+function deleteSelection() {
+  return (dispatch) => {
+    dispatch({
+      type: SELECTION_DELETE,
+    });
+  };
+}
+
 export {
+  deleteSelection,
   toppingsFetch,
   updateSelection,
 };

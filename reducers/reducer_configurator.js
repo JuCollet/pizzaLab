@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { SELECTION_UPDATE, TOPPINGS_FETCH } from '../actiontypes/';
+import { SELECTION_DELETE, SELECTION_UPDATE, TOPPINGS_FETCH } from '../actiontypes/';
 
 const initialState = {
   toppings: {},
@@ -25,6 +25,11 @@ export default function (state = initialState, action) {
   }
 
   switch (action.type) {
+    case SELECTION_DELETE:
+      return {
+        ...state,
+        selection: { price: 9 },
+      };
     case SELECTION_UPDATE:
       return {
         ...state,
