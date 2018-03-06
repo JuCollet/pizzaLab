@@ -1,45 +1,9 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
-import sinon from 'sinon';
 import { mount, shallow } from 'enzyme';
-import { expect } from 'chai';
 import { createMockStore } from 'redux-test-utils';
+import Router from 'next/router';
 
 import Index from '../../pages/index';
-
-const shallowWithoutStore = (customProps) => { // eslint-disable-line no-unused-vars
-  const props = Object.assign({
-    ...customProps,
-  });
-
-  const functionMock = sinon.spy();
-  const wrapper = shallow(<Index {...props} functionToMock={functionMock} />);
-
-  return {
-    functionMock,
-    wrapper,
-  };
-};
-
-const mountWithoutStore = (customProps) => { // eslint-disable-line no-unused-vars
-  const props = Object.assign({
-    ...customProps,
-  });
-
-  const functionMock = sinon.spy();
-  const wrapper = mount(<Index {...props} functionToMock={functionMock} />);
-
-  return {
-    functionMock,
-    wrapper,
-  };
-};
-
-const shallowWithStore = (component, store) => { // eslint-disable-line no-unused-vars
-  const context = {
-    store,
-  };
-  return shallow(component, { context });
-};
 
 const mountWithStore = (component, store) => {
   const context = {
@@ -55,6 +19,20 @@ describe('Index', () => {
     };
     const store = createMockStore(testState);
     const wrapper = mountWithStore(<Index />, store);
-    expect(wrapper.exists()).to.eql(true);
+    expect(wrapper.exists()).toBe(true); // eslint-disable-line no-undef
+  });
+  describe('Button', () => {
+    it('Should route to configurator page', () => {
+      Router.push = jest.fn(); // eslint-disable-line no-undef
+      const testState = {
+        showBox: {},
+      };
+      const store = createMockStore(testState);
+      const wrapper = shallow(<Index />, { context: { store } });
+      const buttonComp = wrapper.dive().dive().dive().find('Button')
+        .first();
+      buttonComp.props().clickHandler();
+      expect(Router.push).toBeCalledWith('/configurator'); // eslint-disable-line no-undef
+    });
   });
 });

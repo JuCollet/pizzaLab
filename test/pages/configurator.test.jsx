@@ -1,9 +1,9 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import configureStore from 'redux-mock-store';
+import Router from 'next/router';
 import thunk from 'redux-thunk';
 import sinon from 'sinon';
-import { mount } from 'enzyme';
-import { expect } from 'chai';
+import { mount, shallow } from 'enzyme';
 
 import Configurator from '../../pages/configurator';
 
@@ -87,10 +87,21 @@ const mockFetchingStore = configureStore([thunk])(mockFetchingData);
 describe('Configurator', () => {
   it('Should render if data is fetched', () => {
     const wrapper = mount(<Configurator store={mockStore} />);
-    expect(wrapper.find('ToppingList').exists()).to.eql(true);
+    expect(wrapper.find('ToppingList').exists()).toBe(true); // eslint-disable-line no-undef
   });
   it('Should not render if data is fetching', () => {
     const wrapper = mount(<Configurator store={mockFetchingStore} />);
-    expect(wrapper.find('ToppingList').exists()).to.eql(false);
+    expect(wrapper.find('ToppingList').exists()).toBe(false); // eslint-disable-line no-undef
+  });
+  describe('Add to basket button', () => {
+    it('Should pass the correction event handler', () => {
+      const store = mockStore;
+      Router.push = jest.fn(); // eslint-disable-line no-undef
+      const wrapper = shallow(<Configurator />, { context: { store } });
+      const buttonComp = wrapper.dive().dive().dive().find('Button')
+        .first();
+      buttonComp.props().clickHandler();
+      expect(Router.push).toBeCalledWith('/checkout'); // eslint-disable-line no-undef
+    });
   });
 });
