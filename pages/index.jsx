@@ -1,6 +1,6 @@
 import React from 'react';
 import withRedux from 'next-redux-wrapper';
-import NextLink from 'next/link';
+import Router from 'next/router';
 import styled from 'styled-components';
 
 import Layout from '../components/Layout';
@@ -43,9 +43,7 @@ const Index = () => (
       <SubTitle>Lorem ipsum dolor amet neutra four loko fashion
         axe forage hexagon sartorial food truck trust fund squid tbh.
       </SubTitle>
-      <NextLink href="/configurator">
-        <a><Button title="Créer ma pizza" /></a>
-      </NextLink>
+      <Button title="Créer ma pizza" clickHandler={() => Router.push('/configurator')} />
     </Content>
   </Layout>
 );

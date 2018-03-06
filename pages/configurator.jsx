@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import withRedux from 'next-redux-wrapper';
+import Router from 'next/router';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
@@ -18,16 +19,21 @@ const PageWrapper = styled.div`
 
 const PagePreview = styled.div`
   width: 50%;
+`;
+
+/*
   background-image: url("/static/pizza.png");
   background-size: cover;
   background-position: right;
   background-repeat: no-repeat;
-`;
+*/
 
 const PageTools = styled.div`
   overflow: auto;
   height: calc(100% - 125px);
-  padding: 100px 5% 25px 5%;
+  margin-top: 100px;
+  margin-bottom: 25px;
+  padding: 0 5% 0 5%;
   width: 50%;
 `;
 
@@ -56,8 +62,13 @@ class Configurator extends PureComponent {
           <PageTools>
             <Title>Configurateur</Title>
             <ToppingList toppings={this.props.toppings} selection={this.props.selection} />
-            <Button title="Ajouter au panier" size={40} />
-            <Button title="Reset" color="grey" size={40} clickHandler={this.props.deleteSelection} />
+            <Button title="Ajouter au panier" size={40} clickHandler={() => Router.push('/checkout')} />
+            <Button
+              title="Reset"
+              color="grey"
+              size={40}
+              clickHandler={this.props.deleteSelection}
+            />
           </PageTools>
         </PageWrapper>
       </Layout>
